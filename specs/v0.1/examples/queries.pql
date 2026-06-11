@@ -1,0 +1,10 @@
+find Resource
+select title, url, trust_score
+where category = "database"
+and trust_score >= 80
+sort trust_score desc
+limit 10
+
+trace Resource "res_001"
+
+explain Resource "res_001"

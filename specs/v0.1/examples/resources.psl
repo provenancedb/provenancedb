@@ -1,0 +1,42 @@
+namespace org.provenancedb.examples.resources;
+
+entity Source {
+  title: text required;
+  url: url required unique;
+  publisher: text;
+  accessed_at: datetime required;
+}
+
+entity Evidence {
+  source: ref Source required;
+  evidence_type: enum(documentation, repository, citation, observation) required;
+  excerpt: markdown;
+  confidence: decimal range(0, 1);
+}
+
+entity Resource {
+  title: text required;
+  url: url required unique;
+  category: text required indexed;
+  description: markdown;
+  license: text;
+  maintained: boolean;
+  trust_score: decimal range(0, 100);
+
+  provenance {
+    source: ref Source required;
+    evidence: list<ref Evidence>;
+    track changes;
+    track agent_actions;
+  }
+
+  trust {
+    status: enum(verified, unverified, disputed, stale, rejected);
+    confidence: decimal range(0, 1);
+  }
+
+  lifecycle {
+    review_after: 180d;
+    stale_after: 365d;
+  }
+}

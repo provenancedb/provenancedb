@@ -1,0 +1,54 @@
+{
+  "sources": [
+    {
+      "id": "src_001",
+      "type": "Source",
+      "fields": {
+        "title": "ExampleDB Documentation",
+        "url": "https://example.org/exampledb/docs",
+        "publisher": "Example Organization",
+        "accessed_at": "2026-06-11T00:00:00Z"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_001",
+      "type": "Evidence",
+      "fields": {
+        "source": "src_001",
+        "evidence_type": "documentation",
+        "excerpt": "Project documentation states that the project is licensed under Apache-2.0.",
+        "confidence": 0.88
+      }
+    }
+  ],
+  "resources": [
+    {
+      "id": "res_001",
+      "type": "Resource",
+      "version": "v1",
+      "fields": {
+        "title": "ExampleDB",
+        "url": "https://example.org/exampledb",
+        "category": "database",
+        "description": "An example database project used to demonstrate ProvenanceDB.",
+        "license": "Apache-2.0",
+        "maintained": true,
+        "trust_score": 86.5
+      },
+      "provenance": {
+        "source": "src_001",
+        "evidence": [
+          "ev_001"
+        ]
+      },
+      "trust": {
+        "status": "verified",
+        "confidence": 0.91
+      },
+      "created_at": "2026-06-11T00:00:00Z",
+      "updated_at": "2026-06-11T00:00:00Z"
+    }
+  ]
+}
